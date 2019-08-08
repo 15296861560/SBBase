@@ -28,7 +28,7 @@ public class IndexController {
                 String token=cookie.getValue();
                 //通过token获取User对象
                 User user=userMapper.findByToken(token);
-                if (user!=null){
+                if (user!=null){//user不为空则将user信息存入session
                     request.getSession().setAttribute("user",user);
                 }
                 break;
