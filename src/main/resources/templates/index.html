@@ -26,10 +26,11 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <!--通过git授权app进行登录-->
-                <li><a href="https://github.com/login/oauth/authorize?client_id=784cb00fadf73dfb5f43&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我 <span class="caret"></span></a>
+                <!--检测是否存在session-->
+                <li class="dropdown" th:if="${session.user!=null}">
+                    <!--获取存在session中的用户名-->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" th:text="${session.user.getName()}"> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人资料</a></li>
@@ -37,6 +38,12 @@
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
+                <!--当没有session的时候，显示登录按钮，隐藏个人信息-->
+                <li th:if="${session.user==null}">
+                    <!--通过git授权app进行登录-->
+                    <a href="https://github.com/login/oauth/authorize?client_id=784cb00fadf73dfb5f43&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
+                </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
