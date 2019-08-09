@@ -53,7 +53,8 @@ public class PublishController {
 
         User user = null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie:cookies) {//需添加一个cookie为null时的判断
+        if (cookies!=null&&cookies.length!=0)//cookie不为null时
+        for (Cookie cookie:cookies) {
             if (cookie.getName().equals("token")) {
                 String token = cookie.getValue();
                 //通过token获取User对象
@@ -74,10 +75,10 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
-        question.setGmt_create(System.currentTimeMillis());
-        question.setGmt_modified(question.getGmt_create());
+        question.setGmtCreate(System.currentTimeMillis());
+        question.setGmtModified(question.getGmtCreate());
 
         questionMapper.create(question);
-        return "redirect:/";//返回首页
+        return "redirect:/index ";
     }
 }

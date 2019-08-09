@@ -16,10 +16,14 @@
 
 [菜鸟教程](https://www.runoob.com/)
 
+[Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html)
+
 ##工具
 [Git](https://git-scm.com/download)
 
 [Visual Paradigm](https://www.visual-paradigm.com/cn/)
+
+[lombok](https://projectlombok.org/)
 
 ##数据库脚本
 CREATE TABLE user (

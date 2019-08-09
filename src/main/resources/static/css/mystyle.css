@@ -12,3 +12,13 @@ body {
     /*距离底部*/
     margin-bottom: 15px;
 }
+.media-object{
+    /*图片大小*/
+    width: 40px;
+    height: 40px;
+}
+.text-gray-small{
+    font-size: 12px;
+    font-weight: normal;
+    color: darkgray;
+}
