@@ -26,6 +26,9 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
+                <li th:if="${session.user!=null}">
+                    <a href="/publish">发布</a>
+                </li>
                 <!--检测是否存在session-->
                 <li class="dropdown" th:if="${session.user!=null}">
                     <!--获取存在session中的用户名-->

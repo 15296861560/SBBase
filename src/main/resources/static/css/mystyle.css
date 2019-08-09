@@ -1,0 +1,14 @@
+body {
+    background-color: #efefef;
+}
+.main{
+    background-color: white;
+    /*边距*/
+    margin: 30px;
+}
+.btn-publish{
+    /*右边*/
+    float: right;
+    /*距离底部*/
+    margin-bottom: 15px;
+}

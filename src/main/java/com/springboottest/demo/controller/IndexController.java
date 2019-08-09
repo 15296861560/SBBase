@@ -17,7 +17,7 @@ public class IndexController {
     //注入usermapper
     @Autowired
     private UserMapper userMapper;
-
+    //地址映射
     @GetMapping("/index")
     public String index(HttpServletRequest request){
         //通过request获取Cookie
