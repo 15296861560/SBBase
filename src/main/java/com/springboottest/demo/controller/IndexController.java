@@ -1,5 +1,6 @@
 package com.springboottest.demo.controller;
 
+import com.springboottest.demo.dto.PageDTO;
 import com.springboottest.demo.dto.QuestionDTO;
 import com.springboottest.demo.mapper.QuestionMapper;
 import com.springboottest.demo.mapper.UserMapper;
@@ -26,8 +27,10 @@ public class IndexController {
     @Autowired
     private QuestionService questionService;
     //地址映射
-    @GetMapping("/index")
-    public String index(HttpServletRequest request,Model model){
+    @GetMapping("/")
+    public String index(HttpServletRequest request,Model model,
+                        @RequestParam(name="page",defaultValue = "1")Integer page,//通过@RequestParam注解获取名字为page的参数默认值为1类型为Integer
+                        @RequestParam(name="size",defaultValue = "5")Integer size){
         //通过request获取Cookie
         Cookie[] cookies = request.getCookies();
         //从Cookie中获取token
@@ -45,8 +48,8 @@ public class IndexController {
             }
         }
 
-        List<QuestionDTO>questionDTOs=questionService.list();
-        model.addAttribute("questionDTOs",questionDTOs);
+        PageDTO pageDTO=questionService.list(page,size);
+        model.addAttribute("pageDTO",pageDTO);
 
         return "index";
 

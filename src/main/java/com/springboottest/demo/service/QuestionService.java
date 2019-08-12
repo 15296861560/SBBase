@@ -1,5 +1,6 @@
 package com.springboottest.demo.service;
 
+import com.springboottest.demo.dto.PageDTO;
 import com.springboottest.demo.dto.QuestionDTO;
 import com.springboottest.demo.mapper.QuestionMapper;
 import com.springboottest.demo.mapper.UserMapper;
@@ -22,9 +23,27 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
-    public List<QuestionDTO> list() {
-        List<Question> questions = questionMapper.list();
-        List<QuestionDTO> questionDTOList =new ArrayList<QuestionDTO>();
+    public PageDTO list(Integer page, Integer size) {
+
+        PageDTO pageDTO=new PageDTO();
+        Integer totalCount = questionMapper.questionCount();//问题总数
+        pageDTO.setPageDTO(totalCount,page,size);
+
+
+        //手动输入超出范围页码的时候对页码的处理
+//        if (page<1){
+//            page=1;
+//
+//        }
+//        if (page>pageDTO.getTotalPage()){
+//            page=pageDTO.getTotalPage();
+//
+//        }
+
+        Integer offset=size*(page-1);
+        List<Question> questions = questionMapper.list(offset,size);
+        List<QuestionDTO> questionDTOList =new ArrayList<>();
+
         for (Question question : questions) {
             User user=userMapper.findByID(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
@@ -32,6 +51,7 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        return questionDTOList;
+        pageDTO.setQuestionDTOS(questionDTOList);
+        return pageDTO;
     }
 }
