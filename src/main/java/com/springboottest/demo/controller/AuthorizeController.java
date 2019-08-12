@@ -42,7 +42,8 @@ public class AuthorizeController {
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirectUri(redirectUri);
         accessTokenDTO.setState(state);
-        String accessToken = githubProvider.getAccessToken(accessTokenDTO);
+        String accessToken = githubProvider.getAccessToken(accessTokenDTO);//通过provider获取token
+//        String accessToken = "c66ddb7322cab60eaf9c468f7334807a2b7f5f7e";//bug已修复，先注释掉后期无异常将直接删除
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if (githubUser!=null&&githubUser.getId()!=null){
             //加载用户数据

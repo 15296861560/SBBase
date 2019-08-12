@@ -62,7 +62,7 @@
             <div class="media"  th:each=" questionDTO: ${questionDTOs}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object" th:src="@{questionDTO.user.avatarUrl}">
+                        <img class="media-object" th:src="${questionDTO.user.avatarUrl}">
                     </a>
                 </div>
                 <div class="media-body">
@@ -73,14 +73,15 @@
                         <span th:text="${questionDTO.viewCount}"></span>次浏览·
                         <span th:text="${questionDTO.likeCount}"></span>个赞·
                         <!--<span th:text="${#dates.format(questionDTO.gmtCreate,'dd MMMM yyyy')}"></span>-->
-                        <span th:text="${#dates.format(questionDTO.gmtCreate,'yyyy MMM dd')}"></span>
+                        <span th:text="${#dates.format(questionDTO.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
                     </span>
                 </div>
             </div>
         </div>
         <!--右边-->
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>热门话题</h3>
+            <h2>热门话题</h2>
+            <span><img src="img/img12.jpg" height="50" width="250"/></span>
         </div>
 
     </div>
