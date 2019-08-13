@@ -42,8 +42,8 @@ public class AuthorizeController {
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirectUri(redirectUri);
         accessTokenDTO.setState(state);
-//        String accessToken = githubProvider.getAccessToken(accessTokenDTO);//通过provider获取token
-        String accessToken = "024c26c0cd834e4df459255344b7fb831616f617";//bug已修复，先注释掉后期无异常将直接删除
+        String accessToken = githubProvider.getAccessToken(accessTokenDTO);//通过provider获取token
+//        String accessToken = "024c26c0cd834e4df459255344b7fb831616f617";//bug已修复，先注释掉后期无异常将直接删除
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if (githubUser!=null&&githubUser.getId()!=null){
             //加载用户数据
@@ -60,10 +60,10 @@ public class AuthorizeController {
             //将token写入cookie
             response.addCookie(new Cookie("token",token));
             //重定向回首页
-            return "redirect:index";//或者写成return "redirect:/"返回根目录，即首页
+            return "redirect:/";//或者写成return "redirect:/"返回根目录，即首页
         }else {
             //登录失败，重新登陆
-            return "redirect:index";
+            return "redirect:/";
         }
     }
 }

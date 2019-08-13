@@ -25,7 +25,7 @@ public class PublishController {
     public String publish(){
         return "publish" ;
     }
-    @PostMapping("/publish")//    post方法给你请求
+    @PostMapping("/publish")// post方法给你请求
     public String doPublish(
             @RequestParam("title")String title,
             @RequestParam("description")String description,
@@ -79,6 +79,6 @@ public class PublishController {
         question.setGmtModified(question.getGmtCreate());
 
         questionMapper.create(question);
-        return "redirect:/index ";
+        return "redirect:/ ";
     }
 }
