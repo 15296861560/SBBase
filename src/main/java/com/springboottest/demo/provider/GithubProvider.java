@@ -22,6 +22,7 @@ public class GithubProvider {
                     .build();
             try (Response response = client.newCall(request).execute()) {
                 String string=response.body().string();
+                System.out.println(string);
                 String[] split=string.split("&");//通过&把字符串拆分
                 String tokenstr=split[0];
                 String token=tokenstr.split("=")[1];//通过=把拆分字符串的第一个再拆分，拆分后的后面一个字符串就是需要的token
