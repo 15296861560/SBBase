@@ -1,25 +1,38 @@
 package com.springboottest.demo.controller;
 
-import com.springboottest.demo.mapper.QuestionMapper;
-import com.springboottest.demo.mapper.UserMapper;
+import com.springboottest.demo.dto.QuestionDTO;
 import com.springboottest.demo.model.Question;
 import com.springboottest.demo.model.User;
+import com.springboottest.demo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PublishController {
+
     @Autowired
-    private QuestionMapper questionMapper;
-    @Autowired
-    private UserMapper userMapper;
+    private QuestionService questionService;
+
+    @GetMapping("/publish/{questionId}")
+    public String edit(@PathVariable(name = "questionId")Integer questionId,
+                       Model model){
+
+
+        QuestionDTO question = questionService.getById(questionId);
+        model.addAttribute("title",question.getTitle());
+        model.addAttribute("description",question.getDescription());
+        model.addAttribute("tag",question.getTag());
+        model.addAttribute("questionId",questionId);
+        return "publish";
+    }
+
 
     @GetMapping("/publish")//get方法给你页面
     public String publish(){
@@ -27,15 +40,17 @@ public class PublishController {
     }
     @PostMapping("/publish")// post方法给你请求
     public String doPublish(
-            @RequestParam("title")String title,
-            @RequestParam("description")String description,
-            @RequestParam("tag")String tag,
+            @RequestParam(value = "title",required = false)String title,
+            @RequestParam(value ="description",required = false)String description,
+            @RequestParam(value ="tag",required = false)String tag,
+            @RequestParam(value ="questionId",required = false)Integer questionId,
             HttpServletRequest request,
             Model model){
 
         model.addAttribute("title",title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
+        model.addAttribute("question",questionId);
         //校验逻辑（可在前端通过js校验）
         if (title==null||title==""){
             model.addAttribute("error","标题不能为空");
@@ -62,10 +77,9 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
+        question.setId(questionId);
 
-        questionMapper.create(question);
+        questionService.createOrUpdate(question);
         return "redirect:/ ";
     }
 }

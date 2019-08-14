@@ -15,10 +15,10 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping("/question/{id}")
-    public String question(@PathVariable(name = "id")Integer id,
+    @GetMapping("/question/{questionId}")
+    public String question(@PathVariable(name = "questionId")Integer questionId,
                            Model model){
-        QuestionDTO questionDTO=questionService.getById(id);
+        QuestionDTO questionDTO=questionService.getById(questionId);
         model.addAttribute("question",questionDTO);
 
         return "question";
