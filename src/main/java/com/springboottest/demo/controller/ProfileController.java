@@ -28,21 +28,8 @@ public class ProfileController {
                           @RequestParam(name="page", defaultValue = "1")Integer page,
                           @RequestParam(name="size",defaultValue = "5")Integer size){
 
-        User user = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies!=null&&cookies.length!=0)//cookie不为null时
-            for (Cookie cookie:cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    //通过token获取User对象
-                    user = userMapper.findByToken(token);
-                    if (user != null) {//user不为空则将user信息存入session
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break;
-                }
-            }
 
+        User user=(User)request.getSession().getAttribute("user");
         if (user==null){
             return "redirect:/";
         }

@@ -31,22 +31,6 @@ public class IndexController {
     public String index(HttpServletRequest request,Model model,
                         @RequestParam(name="page",defaultValue = "1")Integer page,//通过@RequestParam注解获取名字为page的参数默认值为1类型为Integer
                         @RequestParam(name="size",defaultValue = "5")Integer size){
-        //通过request获取Cookie
-        Cookie[] cookies = request.getCookies();
-        //从Cookie中获取token
-        if (cookies!=null&&cookies.length!=0) {//cookie不为null时
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    //通过token获取User对象
-                    User user = userMapper.findByToken(token);
-                    if (user != null) {//user不为空则将user信息存入session
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break;
-                }
-            }
-        }
 
         PageDTO pageDTO=questionService.list(page,size);
         model.addAttribute("pageDTO",pageDTO);
