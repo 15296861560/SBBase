@@ -22,8 +22,12 @@ body {
     font-weight: normal;
     color: darkgray;
 }
+.meun-color{
+    color: #999;
+}
+
 /*
-掉用不了已直接需要用的地方写了
+调用不了已直接需要用的地方写了
 .profile.section{
  */
     /*margin-top: 15px;

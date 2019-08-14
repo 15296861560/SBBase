@@ -43,7 +43,7 @@ public class AuthorizeController {
         accessTokenDTO.setRedirectUri(redirectUri);
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);//通过provider获取token
-//        String accessToken = "024c26c0cd834e4df459255344b7fb831616f617";//bug已修复，先注释掉后期无异常将直接删除
+//        String accessToken = "6ea0acfbd33a05a79f0af40d86f2c8e8f197ae3f";//未能通过code换取token，先直接用token获取用户信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if (githubUser!=null&&githubUser.getId()!=null){
             //加载用户数据
