@@ -94,7 +94,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--filyway-->
+            <!--filyway(更新数据库）（运行不了mvn已跳过）-->
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
@@ -111,6 +111,12 @@
                         <version>1.4.199</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <!--mybatis Generator(自动创建mapper）（运行不了mvn已跳过）-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
             </plugin>
         </plugins>
     </build>

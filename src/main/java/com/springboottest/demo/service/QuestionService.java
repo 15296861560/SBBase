@@ -2,6 +2,8 @@ package com.springboottest.demo.service;
 
 import com.springboottest.demo.dto.PageDTO;
 import com.springboottest.demo.dto.QuestionDTO;
+import com.springboottest.demo.exception.CustomizeErrorCode;
+import com.springboottest.demo.exception.CustomizeException;
 import com.springboottest.demo.mapper.QuestionMapper;
 import com.springboottest.demo.mapper.UserMapper;
 import com.springboottest.demo.model.Question;
@@ -88,6 +90,9 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question=questionMapper.getById(id);
+        if (question==null){
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO=new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
         User user=userMapper.findByID(question.getCreator());
@@ -102,7 +107,10 @@ public class QuestionService {
             questionMapper.create(question);
         }else {
             question.setGmtModified(System.currentTimeMillis());
-            questionMapper.update(question);//更新
+            int uodate=questionMapper.update(question);//更新
+            if (uodate!=1){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 }

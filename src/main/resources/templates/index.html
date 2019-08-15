@@ -3,11 +3,11 @@
 <head>
     <title>基于SpringBoot的一个社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/mystyle.css">
-    <script src="js/jquery-3.4.1.min.js" ></script>
-    <script src="js/bootstrap.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/mystyle.css">
+    <script src="/js/jquery-3.4.1.min.js" ></script>
+    <script src="/js/bootstrap.js" type="application/javascript"></script>
 
 </head>
 <body>
@@ -26,9 +26,9 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" >
+                    <h3 class="media-heading" >
                         <a th:href="@{'/question/'+${questionDTO.id}}" th:text="${questionDTO.title}"></a>
-                    </h4>
+                    </h3>
                     <span th:text="${questionDTO.description}"></span><br>
                     <span class="text-gray-small">
                         <span th:text="${questionDTO.commentCount}"></span>个回复·
