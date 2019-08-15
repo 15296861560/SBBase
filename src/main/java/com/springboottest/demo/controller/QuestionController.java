@@ -2,6 +2,7 @@ package com.springboottest.demo.controller;
 
 import com.springboottest.demo.dto.QuestionDTO;
 import com.springboottest.demo.mapper.QuestionMapper;
+import com.springboottest.demo.model.Question;
 import com.springboottest.demo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ public class QuestionController {
     public String question(@PathVariable(name = "questionId")Integer questionId,
                            Model model){
         QuestionDTO questionDTO=questionService.getById(questionId);
+            questionService.incView(questionDTO);
         model.addAttribute("question",questionDTO);
 
         return "question";

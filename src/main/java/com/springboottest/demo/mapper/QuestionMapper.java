@@ -1,5 +1,6 @@
 package com.springboottest.demo.mapper;
 
+import com.springboottest.demo.dto.QuestionDTO;
 import com.springboottest.demo.model.Question;
 import org.apache.ibatis.annotations.*;
 
@@ -27,4 +28,7 @@ public interface QuestionMapper {
 
     @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified},tag=#{tag} where id=#{id}")
     int update(Question question);
+
+    @Update("update question set view_count=#{viewCount}+1 where id=#{id}")
+    void updateView(QuestionDTO questionDTO);
 }

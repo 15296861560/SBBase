@@ -113,4 +113,8 @@ public class QuestionService {
             }
         }
     }
+
+    public void incView(QuestionDTO questionDTO) {
+        questionMapper.updateView(questionDTO);
+    }
 }
