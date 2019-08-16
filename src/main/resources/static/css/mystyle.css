@@ -26,6 +26,10 @@ body {
     color: #999;
 }
 
+.comment{
+    margin: 15px 0;
+}
+
 /*
 调用不了已直接需要用的地方写了
 .profile.section{

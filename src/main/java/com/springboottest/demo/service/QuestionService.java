@@ -104,6 +104,9 @@ public class QuestionService {
         if (question.getId()==null){//第一次创建
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setViewCount(0);
+            question.setCommentCount(0);
+            question.setLikeCount(0);
             questionMapper.create(question);
         }else {
             question.setGmtModified(System.currentTimeMillis());
@@ -116,5 +119,8 @@ public class QuestionService {
 
     public void incView(QuestionDTO questionDTO) {
         questionMapper.updateView(questionDTO);
+    }
+    public void incComment(Question question) {
+        questionMapper.updateComment(question);
     }
 }

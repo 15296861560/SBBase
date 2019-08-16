@@ -31,4 +31,10 @@ public interface QuestionMapper {
 
     @Update("update question set view_count=#{viewCount}+1 where id=#{id}")
     void updateView(QuestionDTO questionDTO);
+
+    @Update("update question set comment_count=#{commentCount}+1 where id=#{id}")
+    void updateComment(Question question);
+
+    @Select("select * from question where id=#{id}")
+    Question selectById(@Param(value = "id") Integer id);
 }
