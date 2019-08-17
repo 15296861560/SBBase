@@ -10,6 +10,17 @@
     <script src="/js/bootstrap.js" type="application/javascript"></script>
 
 </head>
+<!--是否关闭页面-->
+<script type="application/javascript">
+    window.onload=function () {//进入页面的时候加载
+        var closable=window.localStorage.getItem("closable");
+        if (closable=="true"){//localStorage里存的是字符串
+            window.close();
+            window.localStorage.removeItem("closable");
+        }
+    }
+</script>
+
 <body>
 <div th:insert="~{navigation::nav}"></div>
 <div class="container-fluid main">
