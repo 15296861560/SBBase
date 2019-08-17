@@ -11,7 +11,7 @@ public interface UserMapper {
     User findByToken(@Param("token") String token);//形参是类的时候自动放入值，不是的时候要加@Param（）注解
 
     @Select("select * from user where id=#{id}")
-    User findByID(@Param("id") Integer id);
+    User findById(@Param("id") Integer id);
 
     @Select("select * from user where account_id=#{accountId}")
     User findByAccountId(@Param("accountId") String accountId);

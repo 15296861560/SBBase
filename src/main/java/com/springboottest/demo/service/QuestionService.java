@@ -47,7 +47,7 @@ public class QuestionService {
         List<QuestionDTO> questionDTOList =new ArrayList<>();
 
         for (Question question : questions) {
-            User user=userMapper.findByID(question.getCreator());
+            User user=userMapper.findById(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question,questionDTO);//把question的所有属性拷贝到questionDTO上面
             questionDTO.setUser(user);
@@ -78,7 +78,7 @@ public class QuestionService {
         List<QuestionDTO> questionDTOList =new ArrayList<>();
 
         for (Question question : questions) {
-            User user=userMapper.findByID(question.getCreator());
+            User user=userMapper.findById(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question,questionDTO);//把question的所有属性拷贝到questionDTO上面
             questionDTO.setUser(user);
@@ -95,7 +95,7 @@ public class QuestionService {
         }
         QuestionDTO questionDTO=new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
-        User user=userMapper.findByID(question.getCreator());
+        User user=userMapper.findById(question.getCreator());
         questionDTO.setUser(user);
         return questionDTO;
     }

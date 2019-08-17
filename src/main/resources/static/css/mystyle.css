@@ -22,17 +22,36 @@ body {
     font-weight: normal;
     color: darkgray;
 }
-.meun-color{
-    color: #999;
-}
+/*.meun-color{*/
+    /*color: #999;*/
+/*}*/
 
 .comment{
     margin: 15px 0;
 }
 
-/*
-调用不了已直接需要用的地方写了
-.profile.section{
- */
-    /*margin-top: 15px;
-}*/
+.comment-sp{
+    margin-top: 0px;
+}
+
+.comments{
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.menu{
+    display: block;
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.menu .icon{
+    margin-right: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.menu .icon:hover{
+    color: #499ef3;
+}

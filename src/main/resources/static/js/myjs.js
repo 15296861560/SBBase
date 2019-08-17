@@ -26,7 +26,6 @@ function post() {
 
                 }
             }
-            console.log(response);
 
         },
         dataType: "json"
