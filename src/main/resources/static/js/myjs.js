@@ -112,13 +112,9 @@ function collapseComment(e) {
                     mediaBodyElement.append(contentElement);
                     mediaBodyElement.append(menuElement);
 
-
-
                     commentElement.append(mediaLeftElement);//头像
                     commentElement.append(mediaBodyElement);//主体
                     subCommentContainer.prepend(commentElement);
-
-
                 });
 
                 // 展开二级评论
@@ -127,8 +123,27 @@ function collapseComment(e) {
             });
 
         }
-
-
-
     }
 }
+
+
+//展示标签
+function showTags() {
+    $("#select-tags").show();
+}
+
+//选择标签
+function selectTag(e) {
+    var value=e.getAttribute("data-tag");
+    var previous = $("#tag").val();
+
+    //需要添加的标签还未添加的时候才添加标签
+    if (previous.indexOf(value)==-1){
+        if (previous){
+            $("#tag").val(previous+","+value);
+        } else {
+            $("#tag").val(value);
+        }
+    }
+}
+

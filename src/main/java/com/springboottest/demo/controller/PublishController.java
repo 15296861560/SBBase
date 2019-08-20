@@ -1,9 +1,11 @@
 package com.springboottest.demo.controller;
 
+import com.springboottest.demo.cache.TagCache;
 import com.springboottest.demo.dto.QuestionDTO;
 import com.springboottest.demo.model.Question;
 import com.springboottest.demo.model.User;
 import com.springboottest.demo.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +32,14 @@ public class PublishController {
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());
         model.addAttribute("questionId",questionId);
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
 
     @GetMapping("/publish")//get方法给你页面
-    public String publish(){
+    public String publish(Model model){
+        model.addAttribute("tags", TagCache.get());
         return "publish" ;
     }
     @PostMapping("/publish")// post方法给你请求
@@ -51,6 +55,8 @@ public class PublishController {
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
         model.addAttribute("question",questionId);
+
+        model.addAttribute("tags", TagCache.get());
         //校验逻辑（可在前端通过js校验）
         if (title==null||title==""){
             model.addAttribute("error","标题不能为空");
@@ -63,6 +69,12 @@ public class PublishController {
         }
         if (tag==null||tag==""){
             model.addAttribute("error","标签不能为空");
+            return "publish";
+        }
+
+        String filterValid = TagCache.filterValid(tag);
+        if (StringUtils.isNotBlank(filterValid)){
+            model.addAttribute("error","输入非法标签:"+filterValid);
             return "publish";
         }
 
