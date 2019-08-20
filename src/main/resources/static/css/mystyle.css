@@ -28,6 +28,9 @@ body {
 /*.meun-color{*/
     /*color: #999;*/
 /*}*/
+.question_tag{
+    margin-right: 5px;
+}
 
 .comment{
     margin: 15px 0;
