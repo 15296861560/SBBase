@@ -18,7 +18,8 @@ public interface CommentMapper {
     @Select("select * from comment where parent_id=#{parentId}")
     Comment selectByParentId(@Param(value = "parentId") Integer parentId);
 
-    @Select("select * from comment where parent_id=#{parentId} and type=#{type} order by gmt_create desc")
+    @Select("select * from comment where parent_id=#{parentId} and type=#{type} " +
+            "")
     List<Comment> selectByParentIdAndType(@Param(value = "parentId") Integer parentId, @Param(value = "type") Integer type);
 
     @Select("select * from comment where id=#{id}")
