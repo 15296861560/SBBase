@@ -22,6 +22,9 @@ body {
     font-weight: normal;
     color: darkgray;
 }
+.question_title{
+    margin-top: 25px;
+}
 /*.meun-color{*/
     /*color: #999;*/
 /*}*/
@@ -39,6 +42,15 @@ body {
     margin-bottom: 15px;
     border-bottom: 1px solid #eeeeee;
 }
+.sub-comments{
+    /*圆角*/
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    /*边界线和它的颜色*/
+    border: 1px solid #eee;
+    padding-top: 15px;
+}
 
 .menu{
     display: block;
@@ -52,6 +64,11 @@ body {
     font-size: 15px;
     cursor: pointer;
 }
+
+.menu .active{
+    color:#499ef3 ;
+}
+
 .menu .icon:hover{
     color: #499ef3;
 }

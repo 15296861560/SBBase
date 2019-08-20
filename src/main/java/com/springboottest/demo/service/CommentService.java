@@ -43,7 +43,7 @@ public class CommentService {
         }
         if (comment.getType()==CommmentTypeEnum.COMMENT.getType()){
             //回复评论
-            Comment dbcomment = commentMapper.selectByParentId(comment.getParentId());
+            Comment dbcomment = commentMapper.selectId(comment.getParentId());//查看数据库中是否有该评论所评论的评论
             if (dbcomment==null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
@@ -61,8 +61,8 @@ public class CommentService {
 
     }
 
-    public List<CommentDTO> listByQuestionId(Integer questionId) {
-        List<Comment> comments = commentMapper.selectByParentIdAndType(questionId,1);
+    public List<CommentDTO> listByQuestionId(Integer questionId,Integer type) {
+        List<Comment> comments = commentMapper.selectByParentIdAndType(questionId,type);
         if (comments.size()==0){
             return new ArrayList<>();
         }
@@ -87,6 +87,7 @@ public class CommentService {
             commentDTO.setUser(userMap.get(comment.getCommentator()));
             return commentDTO;
         }).collect(Collectors.toList());
+
         return commentDTOS;
     }
 }

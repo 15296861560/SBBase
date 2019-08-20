@@ -48,7 +48,7 @@ public class AuthorizeController {
         accessTokenDTO.setRedirectUri(redirectUri);
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);//通过provider获取token
-//        String accessToken = "";//未能通过code换取token，先直接用token获取用户信息
+//        String accessToken = " ";//未能通过code换取token，先直接用token获取用户信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if (githubUser!=null&&githubUser.getId()!=null){
             //加载用户数据
