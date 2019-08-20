@@ -25,11 +25,17 @@ body {
 .question_title{
     margin-top: 25px;
 }
-/*.meun-color{*/
-    /*color: #999;*/
-/*}*/
+
 .question_tag{
     margin-right: 5px;
+}
+
+.question_relate{
+    line-height: 30px;
+    font-size: 25px;
+    margin-left: 0;
+    list-style: none;
+    padding-left:0;
 }
 
 .comment{

@@ -8,12 +8,16 @@ import com.springboottest.demo.mapper.QuestionMapper;
 import com.springboottest.demo.mapper.UserMapper;
 import com.springboottest.demo.model.Question;
 import com.springboottest.demo.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 //当一个请求需要组装两个数据库对象的时候，需要一个service这样一个中间层去组装
 @Service
@@ -123,4 +127,13 @@ public class QuestionService {
     public void incComment(Question question) {
         questionMapper.updateComment(question);
     }
+    public List<Question> listByQuestionTag(Integer id){
+        Question question = questionMapper.getById(id);
+        //用英文的逗号分隔tag
+        String[] tags = StringUtils.split(question.getTag(), ",");
+        //用|把刚刚分隔的字符串重新拼接
+        String regexTag = Arrays.stream(tags).collect(Collectors.joining("|"));
+        //将question中的tag该为处理后的regexTag，便于执行mapper中关于tag正则表达式的操作
+        question.setTag(regexTag);
+        return questionMapper.listByQuestionTag(question);}
 }
