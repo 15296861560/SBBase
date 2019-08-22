@@ -75,7 +75,7 @@
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <li th:each=" page: ${pageDTO.pages}" th:class="${pageDTO.currentPage==page}?'active':''"><a th:href="@{/profile/${section}/(page=${page})}" th:text="${page}" ></a></li>
+                    <li th:each=" page: ${pageDTO.pages}" th:class="${pageDTO.currentPage==page}?'active':''"><a th:href="@{'/profile/'+${section}+'/?page='+${page}}" th:text="${page}" ></a></li>
 
                     <li th:if="${pageDTO.showNext}">
                         <a th:href="@{'/profile/'+${section}+'/?page='+${pageDTO.currentPage+1}}" aria-label="Next">

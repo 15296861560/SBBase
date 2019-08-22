@@ -6,10 +6,15 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/mystyle.css">
+    <link rel="stylesheet" href="/css/editormd.preview.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.js" type="application/javascript"></script>
     <script src="/js/moment.js" type="application/javascript"></script>
     <script src="/js/myjs.js" type="application/javascript"></script>
+    <script src="/js/editormd.js" type="application/javascript"></script>
+    <script src="/js/lib/marked.min.js"></script>
+    <script src="/js/lib/prettify.min.js"></script>
+
 
 </head>
 <body>
@@ -28,7 +33,15 @@
 
                 <!--内容-->
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${question.description}"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
+                    <textarea th:text="${question.description}" style="display: none;"></textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        editormd.markdownToHTML("question-view", {
+                        });
+                    });
+                </script>
 
                 <!--标签-->
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -131,7 +144,7 @@
 
             <!--广告-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <span><img class="img-thumbnail" src="/img/img12.jpg" height="50" width="250"/></span>
+            <span><img class="img-thumbnail" src="/images/img12.jpg" height="50" width="250"/></span>
 
 
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
