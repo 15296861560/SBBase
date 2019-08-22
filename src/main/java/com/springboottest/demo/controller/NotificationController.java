@@ -1,7 +1,9 @@
 package com.springboottest.demo.controller;
 
+
 import com.springboottest.demo.dto.NotificationDTO;
 import com.springboottest.demo.dto.PageDTO;
+import com.springboottest.demo.enums.NotificationTypeEnum;
 import com.springboottest.demo.mapper.UserMapper;
 import com.springboottest.demo.model.User;
 import com.springboottest.demo.service.NotificationService;
@@ -13,12 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
-public class ProfileController {
+public class NotificationController {
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -26,12 +26,9 @@ public class ProfileController {
     @Autowired
     private NotificationService notificationService;
 
-    @GetMapping("/profile/{action}")//访问profile的时候是哪个“action”行为
+    @GetMapping("/notification/{id}")//访问profile的时候是哪个“action”行为
     public String profile(HttpServletRequest request,
-                          @PathVariable(name = "action")String action,
-                          Model model,
-                          @RequestParam(name="page", defaultValue = "1")Integer page,
-                          @RequestParam(name="size",defaultValue = "5")Integer size){
+                          @PathVariable(name = "id")Integer id){
 
 
         User user=(User)request.getSession().getAttribute("user");
@@ -39,23 +36,8 @@ public class ProfileController {
             return "redirect:/";
         }
 
-        if ("questions".equals(action)){//当action是questions的时候
-            model.addAttribute("section","questions");
-            model.addAttribute("sectionName","我的提问");
-            PageDTO pageDTO=questionService.list(user.getId(),page,size);
-            model.addAttribute("pageDTO",pageDTO);
-        }else if ("replies".equals(action)){
+        NotificationDTO notificationDTO=notificationService.read(id,user);
 
-            PageDTO pageDTO=notificationService.list(user.getId(),page,size);
-            model.addAttribute("section","replies");
-            model.addAttribute("sectionName","最新回复");
-            model.addAttribute("pageDTO",pageDTO);
-
-        }
-
-
-
-
-        return "profile";
+        return "redirect:/question/"+notificationDTO.getOuterId();
     }
 }

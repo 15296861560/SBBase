@@ -6,15 +6,14 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 @Data
-public class PageDTO {
-    private List<QuestionDTO>questionDTOS;
+public class PageDTO<T> {
+    private List<T> dataDTOS;
     private boolean showPre;//上一页按钮
     private boolean showNext;//下一页按钮
     private boolean showFirst;//返回第一页按钮
     private boolean showEnd;//返回最后一页按钮
     private Integer currentPage;//当前页
     private List<Integer>pages=new ArrayList<>();//显示的可直达页面
-//    private Integer page;//页面数
     private Integer totalPage;//页面总数
 
 

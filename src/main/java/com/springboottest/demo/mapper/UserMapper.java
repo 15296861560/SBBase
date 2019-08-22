@@ -3,6 +3,8 @@ package com.springboottest.demo.mapper;
 import com.springboottest.demo.model.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     @Insert("insert into user(name,account_id,token,gmt_create,gmt_modified,avatar_url) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified},#{avatarUrl})")
@@ -18,4 +20,5 @@ public interface UserMapper {
 
     @Update("update user set name=#{name},token=#{token},gmt_modified=#{gmtModified},avatar_url=#{avatarUrl} where account_id=#{accountId}")
     void update(User user);
+
 }

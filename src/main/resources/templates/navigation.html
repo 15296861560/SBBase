@@ -23,6 +23,11 @@
                     <li th:if="${session.user!=null}">
                         <a href="/publish">提问</a>
                     </li>
+                    <li>
+                        <a href="/profile/replies">通知
+                            <span class="badge" th:text="${session.unreadCount}"></span></a>
+                    </li>
+
                     <!--检测是否存在session-->
                     <li class="dropdown" th:if="${session.user!=null}">
                         <!--获取存在session中的用户名-->
@@ -34,7 +39,8 @@
                         </a>
                         <ul class="dropdown-menu" >
                             <li><a href="/profile/questions">我的问题</a></li>
-                            <li><a href="/profile/replies">最新回复</a></li>
+                            <li><a href="/profile/replies">最新回复
+                                <span class="badge" th:text="${session.unreadCount}"></span></a></li>
                             <li><a href="#">个人资料</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">退出登录</a></li>

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 //当一个请求需要组装两个数据库对象的时候，需要一个service这样一个中间层去组装
@@ -31,7 +30,7 @@ public class QuestionService {
 
     public PageDTO list(Integer page, Integer size) {
 
-        PageDTO pageDTO=new PageDTO();
+        PageDTO<QuestionDTO> pageDTO=new PageDTO();
         Integer totalCount = questionMapper.questionCount();//问题总数
         pageDTO.setPageDTO(totalCount,page,size);
 
@@ -57,7 +56,7 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        pageDTO.setQuestionDTOS(questionDTOList);
+        pageDTO.setDataDTOS(questionDTOList);
         return pageDTO;
     }
 
@@ -88,7 +87,7 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        pageDTO.setQuestionDTOS(questionDTOList);
+        pageDTO.setDataDTOS(questionDTOList);
         return pageDTO;
     }
 
