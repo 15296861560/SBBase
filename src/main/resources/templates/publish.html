@@ -45,8 +45,11 @@
                             height : 350,
                             path   : "/js/lib/",
                             delay:0,
-                            watch:false,
-                            placeholder:"请输入问题描述"
+                            watch:false,//默认预览是否打开
+                            placeholder:"请输入问题描述",
+                            imageUpload    : true,//是否打开上传图片功能
+                            imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],//支持格式
+                            imageUploadURL : "/file/upload",//上传路径
                         });
                     });
                 </script>

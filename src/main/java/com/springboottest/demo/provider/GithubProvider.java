@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 
-@Component
+@Component//调用的时候不需要实例化对象，而是通过另外的注解调用
 public class GithubProvider {
     public String getAccessToken(AccessTokenDTO accessTokenDTO){
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
@@ -22,7 +22,6 @@ public class GithubProvider {
                     .build();
             try (Response response = client.newCall(request).execute()) {
                 String string=response.body().string();
-                System.out.println(string);
                 String[] split=string.split("&");//通过&把字符串拆分
                 String tokenstr=split[0];
                 String token=tokenstr.split("=")[1];//通过=把拆分字符串的第一个再拆分，拆分后的后面一个字符串就是需要的token
@@ -35,6 +34,7 @@ public class GithubProvider {
         //获取通过github登录用户信息
         public GithubUser getUser(String accessToken){
         OkHttpClient client=new OkHttpClient();
+        //通过accessToken获取用户信息
         Request request=new Request.Builder()
                 .url("https://api.github.com/user?access_token="+accessToken)
                 .build();

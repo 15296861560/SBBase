@@ -42,13 +42,12 @@ public class AuthorizeController {
                            HttpServletResponse response){
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
-        accessTokenDTO.setClientId(clientId);
-        accessTokenDTO.setClientSecret(clientSecret);
+        accessTokenDTO.setClient_id(clientId);
+        accessTokenDTO.setClient_secret(clientSecret);
         accessTokenDTO.setCode(code);
-        accessTokenDTO.setRedirectUri(redirectUri);
+        accessTokenDTO.setRedirect_uri(redirectUri);
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);//通过provider获取token
-//        String accessToken = "";//未能通过code换取token，先直接用token获取用户信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if (githubUser!=null&&githubUser.getId()!=null){
             //加载用户数据
