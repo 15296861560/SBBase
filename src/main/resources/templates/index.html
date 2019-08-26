@@ -53,26 +53,26 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li th:if="${pageDTO.showFirst}">
-                        <a href="/?page=1" aria-label="First">
+                        <a href="/?page=1,search=${search}" aria-label="First">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
 
                     <li th:if="${pageDTO.showPre}">
-                        <a th:href="@{/(page=${pageDTO.currentPage - 1})}" aria-label="Pre">
+                        <a th:href="@{/(page=${pageDTO.currentPage - 1},search=${search})}" aria-label="Pre">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <li th:each=" page: ${pageDTO.pages}" th:class="${pageDTO.currentPage==page}?'active':''"><a th:href="@{/(page=${page})}" th:text="${page}" ></a></li>
+                    <li th:each=" page: ${pageDTO.pages}" th:class="${pageDTO.currentPage==page}?'active':''"><a th:href="@{/(page=${page},search=${search})}" th:text="${page}" ></a></li>
 
                     <li th:if="${pageDTO.showNext}">
-                        <a th:href="@{/(page=${pageDTO.currentPage+1})}" aria-label="Next">
+                        <a th:href="@{/(page=${pageDTO.currentPage+1},search=${search})}" aria-label="Next">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
                     <li th:if="${pageDTO.showEnd}">
 
-                        <a th:href="@{/(page=${pageDTO.totalPage})}" aria-label="End">
+                        <a th:href="@{/(page=${pageDTO.totalPage},search=${search})}" aria-label="End">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
 

@@ -110,12 +110,12 @@
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object" th:src="${question.user.avatarUrl}">
+                        <img class="media-object" th:src="${session.user!=null?session.user.avatarUrl:'/images/default-avatar.png'}">
                     </a>
                 </div>
                 <div class="media-body">
                     <h4 class="media-bottom">
-                        <a th:href="@{'/question/'+${question.id}}" th:text="${question.user.name}"></a>
+                        <a href="#" th:text="${session.user!=null?session.user.name:'未登陆不可评论 '}"></a>
                     </h4>
                 </div>
                 <input type="hidden" id="question_id" th:value="${question.id}">

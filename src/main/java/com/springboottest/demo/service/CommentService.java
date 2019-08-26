@@ -81,6 +81,9 @@ public class CommentService {
     }
 
     private void createNotify(Comment comment, Integer recevier,NotificationTypeEnum typeEnum,Integer outerId) {
+        if (recevier==comment.getCommentator()){//如果是我自己评论我的问题或回复就不用添加通知
+            return;
+        }
         //添加新通知的数据
         Notification notification = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());

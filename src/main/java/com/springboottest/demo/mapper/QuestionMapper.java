@@ -1,6 +1,7 @@
 package com.springboottest.demo.mapper;
 
 import com.springboottest.demo.dto.QuestionDTO;
+import com.springboottest.demo.dto.QuestionQueryDTO;
 import com.springboottest.demo.model.Question;
 import org.apache.ibatis.annotations.*;
 
@@ -16,6 +17,9 @@ public interface QuestionMapper {
 
     @Select("select count(1) from question")//查询问题总数
     Integer questionCount();
+
+    @Select("select count(*) from question where title regexp #{search}")//查询符合搜索条件的问题总数
+    Integer searchCount(QuestionQueryDTO questionQueryDTO);
 
     @Select("select * from question where creator=#{userId} order by gmt_create desc limit #{offset},#{size} ")
     List<Question> listByUserId(@Param("userId") Integer userId, @Param(value = "offset") Integer offset, @Param(value = "size")Integer size);
@@ -38,7 +42,9 @@ public interface QuestionMapper {
     @Select("select * from question where id=#{id}")
     Question selectById(@Param(value = "id") Integer id);
 
-    @Select("select * from question where id!=#{id} and tag regexp #{tag}  ")
+    @Select("select * from question where id!=#{id} and tag regexp #{tag}")
     List<Question> listByQuestionTag(Question question);
 
+    @Select("select * from question where title regexp #{search} order by gmt_create desc limit #{page},#{size} ")//分页查询
+    List<Question> listBySearch(QuestionQueryDTO questionQueryDTO);
 }
