@@ -19,6 +19,8 @@
  - vim src/main/resources/application-production.properties
  - mvn package
  - java -jar -Dspring.profile.active=praduction target/demo-0.0.1-SNAPSHOT.jar
+ - ps -aux | grep-java
+ - git pull
 
 ## 资料
 [Spring 文档](https://spring.io/guides)
