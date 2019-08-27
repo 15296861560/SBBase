@@ -49,8 +49,8 @@
                     <!--当没有session的时候，显示登录按钮，隐藏个人信息-->
                     <li th:if="${session.user==null}">
                         <!--通过git授权app进行登录-->
-                        <a href="https://github.com/login/oauth/authorize?client_id=784cb00fadf73dfb5f43&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
                         <!--<a href="https://github.com/login/oauth/authorize?client_id=784cb00fadf73dfb5f43&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>-->
+                        <a th:href="@{https://github.com/login/oauth/authorize(client_id='784cb00fadf73dfb5f43',redirect_uri=${#httpServletRequest.getRequestURL()},scope='user',state=1)}">登录</a>
                     </li>
 
                 </ul>

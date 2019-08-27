@@ -1,4 +1,25 @@
 ## SpringBoot
+
+##部署
+ - Git
+ - JDK
+ - Maven
+ - MySQL
+ ##步骤
+ - yum update
+ - yum install git
+ - mkdir App
+ - cd App
+ - git clone https://github.com/15296861560/SBBase.git
+ - yum install maven
+ - mvn -v
+ - mvn compile package
+ - more src/main/resources/application.properties
+ - cp src/main/resources/application.properties src/main/resources/application-production.properties
+ - vim src/main/resources/application-production.properties
+ - mvn package
+ - java -jar -Dspring.profile.active=praduction target/demo-0.0.1-SNAPSHOT.jar
+
 ## 资料
 [Spring 文档](https://spring.io/guides)
 

@@ -6,6 +6,7 @@ import com.springboottest.demo.mapper.UserMapper;
 import com.springboottest.demo.model.User;
 import com.springboottest.demo.provider.GithubProvider;
 import com.springboottest.demo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Controller
+@Slf4j
 public class AuthorizeController {
 
     @Autowired
@@ -30,9 +32,6 @@ public class AuthorizeController {
     @Value("${github.redirect.uri}")
     private String redirectUri;
 
-    //注入UserMapper
-    @Autowired
-    private UserMapper userMapper;
 
     @Autowired
     private UserService userService;
@@ -67,6 +66,7 @@ public class AuthorizeController {
             return "redirect:/";//或者写成return "redirect:/"返回根目录，即首页
         }else {
             //登录失败，重新登陆
+            log.error("callback get github error,{}",githubUser);
             return "redirect:/";
         }
     }
