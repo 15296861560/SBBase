@@ -16,11 +16,12 @@ public class UserService {
         User dbuser=userMapper.findByAccountId(user.getAccountId());
         if ((dbuser==null)){
             user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
+            user.setGmtModified(System.currentTimeMillis());
             //将新用户信息注入数据库
             userMapper.insert(user);
         }else {
             //更新老用户
+            user.setGmtModified(System.currentTimeMillis());
             userMapper.update(user);
         }
 
