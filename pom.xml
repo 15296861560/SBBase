@@ -120,11 +120,21 @@
                     <user>lgy</user>
                     <password>123456</password>
                 </configuration>
+                <!--<configuration>-->
+                    <!--<url>jdbc:mysql://10.9.12.64/springboottest</url>-->
+                    <!--<user>root/user>-->
+                    <!--<password>Abc651178</password>-->
+                <!--</configuration>-->
                 <dependencies>
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
                         <version>1.4.199</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.17</version>
                     </dependency>
                 </dependencies>
             </plugin>
