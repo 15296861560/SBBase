@@ -18,7 +18,7 @@
  - cp src/main/resources/application.properties src/main/resources/application-production.properties
  - vim src/main/resources/application-production.properties
  - mvn package
- - java -jar -Dspring.profile.active=praduction target/demo-0.0.1-SNAPSHOT.jar
+ - java -jar -Dspring.profile.active=production target/demo-0.0.1-SNAPSHOT.jar
  - ps -aux | grep-java
  - git pull
 
@@ -51,26 +51,87 @@
 [lombok](https://projectlombok.org/)
 
 ##数据库脚本
-CREATE TABLE user (
-  id int  AUTO_INCREMENT   PRIMARY KEY NOT NULL,
-  account_id varchar(100) ,
-  name varchar(50) ,
-  token char(36) ,
-  gmt_create bigint ,
-  gmt_modified bigint ,
-);
-create table question
-(
-    id int auto_increment primary key,
-	title varchar(50),
-	description text,
-	gmt_create bigint,
-	gmt_modified bigint,
-	creator int,
-	comment_count int,
-	view_count int,
-	like_count int,
-	tag varchar(256)
-);
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` varchar(100) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `token` char(36) DEFAULT NULL,
+  `gmt_create` bigint(19) DEFAULT NULL,
+  `gmt_modified` bigint(19) DEFAULT NULL,
+  `bio` varchar(255) DEFAULT NULL,
+  `avatar_url` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for question
+-- ----------------------------
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE `question` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 NOT NULL,
+  `GMT_CREATE` bigint(19) DEFAULT NULL,
+  `GMT_MODIFIED` bigint(19) DEFAULT NULL,
+  `TAG` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `CREATOR` int(10) NOT NULL,
+  `COMMENT_COUNT` int(10) NOT NULL DEFAULT '0',
+  `VIEW_COUNT` int(10) NOT NULL DEFAULT '0',
+  `LIKE_COUNT` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for comment
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `PARENT_ID` int(10) DEFAULT NULL,
+  `TYPE` int(10) DEFAULT NULL,
+  `COMMENTATOR` int(10) DEFAULT NULL,
+  `GMT_CREATE` bigint(19) DEFAULT NULL,
+  `GMT_MODIFIED` bigint(19) DEFAULT NULL,
+  `LIKE_COUNT` bigint(19) DEFAULT NULL,
+  `CONTENT` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for notification
+-- ----------------------------
+DROP TABLE IF EXISTS `notification`;
+CREATE TABLE `notification` (
+  `ID` int(10) NOT NULL AUTO_INCREMENT,
+  `NOTIFIER` int(10) NOT NULL,
+  `RECEVIER` int(10) DEFAULT NULL,
+  `OUTER_ID` int(10) DEFAULT NULL,
+  `TYPE` int(10) DEFAULT NULL,
+  `GMT_CREATE` bigint(19) DEFAULT NULL,
+  `STATUS` int(10) DEFAULT '0',
+  `NOTIFIER_NAME` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `OUTER_TITLE` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 
 

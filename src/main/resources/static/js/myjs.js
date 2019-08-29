@@ -129,7 +129,13 @@ function collapseComment(e) {
 
 //展示标签
 function showTags() {
+    // 显示标签列表
     $("#select-tags").show();
+}
+
+//隐藏标签
+function hiddenTags() {
+    $("#select-tags").hide();
 }
 
 //选择标签

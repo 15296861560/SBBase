@@ -32,9 +32,9 @@ public class UCloudProvider {
         String generateFileName;
         String[] fileNameSplit = fileName.split("\\.");
         if (fileNameSplit.length>1){
-            generateFileName= UUID.randomUUID().toString()+"."+fileNameSplit[fileNameSplit.length-1];
+            generateFileName= UUID.randomUUID().toString() + "." + fileNameSplit[fileNameSplit.length - 1];
         }else {
-            return null;
+            throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_FAIL);
         }
 
         try {
@@ -69,11 +69,11 @@ public class UCloudProvider {
                         throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_FAIL);
                     }
         } catch (UfileClientException e) {
-            log.error("上传图片出错");
+            log.error("上传图片失败，客户端异常");
             e.printStackTrace();
             return null;
         } catch (UfileServerException e) {
-            log.error("上传图片出错");
+            log.error("上传图片失败，服务端异常");
             e.printStackTrace();
         }
         return generateFileName;

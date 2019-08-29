@@ -58,7 +58,7 @@
                     <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"
                            autocomplete="off"
                            placeholder="输入标签，以，号分隔"
-                            onclick="showTags()">
+                            onclick="showTags()" onblur="hiddenTags()">
 
 
                     <div id="select-tags"  class="publish-tag-tab">

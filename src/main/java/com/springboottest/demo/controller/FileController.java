@@ -31,10 +31,10 @@ public class FileController {
             return fileDTO;
         } catch (IOException e) {
             e.printStackTrace();
+            FileDTO fileDTO = new FileDTO();
+            fileDTO.setSuccess(0);
+            fileDTO.setMessage("上传失败");
+            return fileDTO;
         }
-        FileDTO fileDTO =new FileDTO();
-        fileDTO.setSuccess(1);
-        fileDTO.setUrl("/images/img12.jpg");
-        return fileDTO;
     }
 }
