@@ -1,0 +1,15 @@
+2019-08-27 10:05:27.151  INFO 6432 --- [restartedMain] c.s.demo.SpringboottestApplication       : Starting SpringboottestApplication on WIN-QJCJ7UKGTED with PID 6432 (D:\Test\springboottest\target\classes started by Administrator in D:\Test\springboottest)
+2019-08-27 10:05:27.156  INFO 6432 --- [restartedMain] c.s.demo.SpringboottestApplication       : No active profile set, falling back to default profiles: default
+2019-08-27 10:05:27.280  INFO 6432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-08-27 10:05:27.280  INFO 6432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-08-27 10:05:29.591  INFO 6432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2019-08-27 10:05:29.636  INFO 6432 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-27 10:05:29.636  INFO 6432 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-08-27 10:05:29.792  INFO 6432 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-27 10:05:29.792  INFO 6432 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2512 ms
+2019-08-27 10:05:30.436  INFO 6432 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-27 10:05:30.826  INFO 6432 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-08-27 10:05:31.092  INFO 6432 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-27 10:05:31.161  INFO 6432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2019-08-27 10:05:31.164  INFO 6432 --- [restartedMain] c.s.demo.SpringboottestApplication       : Started SpringboottestApplication in 5.031 seconds (JVM running for 6.527)
+2019-08-27 10:06:36.952  INFO 6432 --- [Thread-15] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

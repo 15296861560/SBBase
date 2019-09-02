@@ -58,12 +58,12 @@
                     <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"
                            autocomplete="off"
                            placeholder="输入标签，以，号分隔"
-                            onclick="showTags()" onblur="hiddenTags()">
+                            onclick="showTags()" >
 
 
                     <div id="select-tags"  class="publish-tag-tab">
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
+                        <ul class="nav nav-tabs" role="tablist" >
                             <li role="presentation" th:each="selectCategory,selectCategoryStat:${tags}"
                                 th:class="${selectCategoryStat.first?'active':''}">
                                 <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab" data-toggle="tab"
