@@ -27,7 +27,7 @@
 
 [Spring 外部文档](https://spring.io/guides/gs/serving-web-content/)
 
-[社区文档](http://localhost:8887/)(http://community.lgy.life)
+[社区文档](http://106.75.79.44)
 
 [GitHub deploy key文档](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys)
 

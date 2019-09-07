@@ -5,7 +5,8 @@ import com.springboottest.demo.dto.GithubUser;
 import com.springboottest.demo.mapper.UserMapper;
 import com.springboottest.demo.model.User;
 import com.springboottest.demo.provider.GithubProvider;
-import com.springboottest.demo.service.UserService;
+import com.springboottest.demo.service.
+        UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +39,7 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code")String code,
                            @RequestParam(name="state")String state ,
-                           HttpServletResponse response){
+                               HttpServletResponse response){
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientId);

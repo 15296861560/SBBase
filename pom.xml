@@ -23,6 +23,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--用于Web和独立环境的现代服务器端的Java模板引擎-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -43,6 +44,7 @@
             <artifactId>okhttp</artifactId>
             <version>3.14.1</version>
         </dependency>
+        <!--将Java Bean序列与JSON字符串互相转换-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
